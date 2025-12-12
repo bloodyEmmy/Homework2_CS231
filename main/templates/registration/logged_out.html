@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Выход выполнен</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <nav>
+        <a href="{% url 'tasks_list' %}">Задачи</a>
+        <a href="{% url 'login' %}">Вход</a>
+    </nav>
+
+    <h1>Вы вышли из системы</h1>
+
+    <div style="background-color: white; padding: 30px; border-radius: 10px; max-width: 600px; margin: 30px auto; border: 1px solid #D7CCC8; box-shadow: 0 5px 15px rgba(93, 64, 55, 0.1); text-align: center;">
+        <p style="font-size: 18px; color: #5D4037; margin-bottom: 20px;">
+            Вы успешно вышли из системы.
+        </p>
+        
+        <a href="{% url 'login' %}" style="display: inline-block; background-color: #8D6E63; color: white; padding: 12px 25px; text-decoration: none; border-radius: 5px; font-weight: bold; font-size: 16px; box-shadow: 0 3px 5px rgba(93, 64, 55, 0.2);">
+            Войти снова
+        </a>
+        
+        <a href="{% url 'tasks_list' %}" style="display: inline-block; background-color: #A1887F; color: white; padding: 12px 25px; text-decoration: none; border-radius: 5px; margin-left: 10px; font-weight: bold; font-size: 16px; box-shadow: 0 3px 5px rgba(93, 64, 55, 0.2);">
+            На главную
+        </a>
+    </div>
+</body>
+</html>

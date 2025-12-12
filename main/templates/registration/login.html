@@ -1,0 +1,60 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вход в систему</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <nav>
+        <a href="{% url 'tasks_list' %}">Задачи</a>
+        <a href="{% url 'login' %}">Вход</a>
+    </nav>
+
+    <h1>Вход в систему</h1>
+
+    <form method="POST">
+        {% csrf_token %}
+        
+        {% if form.errors %}
+            <div style="background-color: #FFCDD2; padding: 15px; border-radius: 5px; margin: 20px auto; max-width: 600px; color: #C62828;">
+                <strong>Ошибка входа:</strong>
+                <ul style="margin: 5px 0;">
+                    {% for field in form %}
+                        {% for error in field.errors %}
+                            <li>{{ error }}</li>
+                        {% endfor %}
+                    {% endfor %}
+                    {% for error in form.non_field_errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+
+        <div style="max-width: 600px; margin: 0 auto;">
+            <div style="margin-bottom: 15px;">
+                <label for="{{ form.username.id_for_label }}" style="display: block; margin-bottom: 5px; font-weight: bold; color: #5D4037;">Имя пользователя:</label>
+                {{ form.username }}
+            </div>
+
+            <div style="margin-bottom: 20px;">
+                <label for="{{ form.password.id_for_label }}" style="display: block; margin-bottom: 5px; font-weight: bold; color: #5D4037;">Пароль:</label>
+                {{ form.password }}
+            </div>
+
+            <button type="submit" style="background-color: #8D6E63; color: white; border: none; padding: 15px 30px; border-radius: 5px; cursor: pointer; font-size: 16px; font-weight: bold; width: 100%;">
+                Войти
+            </button>
+
+            <input type="hidden" name="next" value="{{ next }}">
+        </div>
+    </form>
+
+    <div style="text-align: center; margin-top: 20px; color: #795548;">
+        <p>Нет аккаунта? Обратитесь к администратору.</p>
+    </div>
+</body>
+</html>
