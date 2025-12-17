@@ -18,6 +18,7 @@ python3 -m venv venv
 source venv/bin/activate  # Linux/macOS
 # или
 venv\Scripts\activate  # Windows
+# при наличии ошибки запуска скрипта для Windows: Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process
 ```
 
 3. Установи зависимости:
